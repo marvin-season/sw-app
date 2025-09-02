@@ -1,5 +1,5 @@
 import './App.css'
-import { requestPermission, postMessage } from './utils/notification'
+import { notification } from './utils/notification'
 import { useEffect } from 'react'
 
 const message = {
@@ -8,18 +8,12 @@ const message = {
   url: window.location.origin
 }
 
-async function notification() {
-  const permission = await requestPermission()
-  if (permission === 'granted') {
-    setTimeout(() => postMessage(message), 2000)
-  }
-}
 
 function App() {
 
 
   useEffect(() => {
-    notification()
+    notification(message)
   }, [])
 
   return (
