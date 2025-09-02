@@ -1,6 +1,6 @@
-import './App.css'
-import { notification } from './utils/notification'
-import { useEffect } from 'react'
+import './App.css';
+import { registerServiceWorker, notification } from './utils/notification';
+import { useEffect } from 'react';
 
 const message = {
   title: "新提醒",
@@ -8,10 +8,9 @@ const message = {
   url: window.location.origin
 }
 
+registerServiceWorker('sw.js');
 
 function App() {
-
-
   useEffect(() => {
     notification(message)
   }, [])

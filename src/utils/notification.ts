@@ -26,7 +26,9 @@ export async function requestPermission() {
   }
 }
 
-navigator.serviceWorker.register('/sw.js')
+export async function registerServiceWorker(url: string) {
+  await navigator.serviceWorker.register(url)
+}
 
 export async function postMessage(message: IMessage) {
   await navigator.serviceWorker.ready;
