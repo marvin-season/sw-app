@@ -18,8 +18,9 @@ self.addEventListener('message', event => {
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
-      icon: '/icon.png',
+      icon: '/vite.svg',
       data: { url: data.url }
+      // badge: '/icon.png',
     })
   )
 })

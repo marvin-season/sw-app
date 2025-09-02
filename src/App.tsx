@@ -1,6 +1,5 @@
 import './App.css';
 import { registerServiceWorker, notification } from './utils/notification';
-import { useEffect } from 'react';
 
 const message = {
   title: "新提醒",
@@ -11,14 +10,17 @@ const message = {
 registerServiceWorker('sw.js');
 
 function App() {
-  useEffect(() => {
-    notification(message)
-  }, [])
 
   return (
-    <>
+    <button onClick={() => notification(message)}>
+      <div>
+        <h1>新提醒</h1>
+        <p>这是定时器推送的消息 {new Date().toLocaleTimeString()}</p>
+      </div>
+    </button>
 
-    </>
+
+
   )
 }
 
