@@ -6,10 +6,9 @@ export interface IMessage {
 
 export async function requestPermission() {
   if (!('Notification' in window)) {
-    console.warn('当前浏览器不支持 Notification API')
+    console.warn('Current browser does not support Notification API')
     return
   }
-  console.log('Notification.permission', Notification.permission)
 
   if (Notification.permission === 'granted') {
     return 'granted'
@@ -20,11 +19,9 @@ export async function requestPermission() {
   }
 
   try {
-    const result = await Notification.requestPermission()
-    console.log('Notification.requestPermission() ->', result)
-    return result
+    return await Notification.requestPermission()
   } catch (error) {
-    console.error('Notification.requestPermission error:', error)
+    console.error('requestPermission error:', error)
     return 'denied'
   }
 }
@@ -32,7 +29,6 @@ export async function requestPermission() {
 navigator.serviceWorker.register('/sw.js')
 
 export async function postMessage(message: IMessage) {
-  console.log('postMessage', navigator.serviceWorker.controller)
   await navigator.serviceWorker.ready;
   if (navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage(message)

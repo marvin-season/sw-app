@@ -1,23 +1,19 @@
 self.addEventListener('push', function (event) {
   const notification = event.data.text()
-  console.log('notification', registration, notification)
   event.waitUntil(self.registration.showNotification(notification))
 })
 
 
 self.addEventListener('install', () => {
-  console.log('SW installed')
   self.skipWaiting()
 })
 
 self.addEventListener('activate', event => {
-  console.log('SW activated')
   event.waitUntil(self.clients.claim())
 })
 
 self.addEventListener('message', event => {
   const data = event.data
-  console.log('SW 收到消息:', data)
 
   event.waitUntil(
     self.registration.showNotification(data.title, {
