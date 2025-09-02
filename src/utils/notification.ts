@@ -1,8 +1,7 @@
-
-const message = {
-  title: "新提醒",
-  body: "这是定时器推送的消息 " + new Date().toLocaleTimeString(),
-  url: window.location.origin
+export interface IMessage {
+  title: string
+  body: string
+  url: string
 }
 
 export async function requestPermission() {
@@ -32,7 +31,7 @@ export async function requestPermission() {
 
 navigator.serviceWorker.register('/sw.js')
 
-export async function postMessage() {
+export async function postMessage(message: IMessage) {
   console.log('postMessage', navigator.serviceWorker.controller)
   await navigator.serviceWorker.ready;
   if (navigator.serviceWorker.controller) {
